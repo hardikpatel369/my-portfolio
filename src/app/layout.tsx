@@ -11,6 +11,9 @@ export const metadata: Metadata = {
         description: 'Full-stack developer with expertise in Java, Android, Python, and cloud technologies.',
         type: 'website',
     },
+    icons: {
+        icon: '/hardik.jpg',
+    },
 }
 
 export default function RootLayout({
