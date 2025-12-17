@@ -104,8 +104,8 @@ export default function Hero() {
             className="relative min-h-screen flex items-center bg-bg-primary"
         >
             {/* Animated glow */}
-            <div className="hero-glow absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-[var(--accent-glow)] blur-[120px]" />
-            <div className="hero-glow absolute bottom-1/4 -right-32 w-80 h-80 rounded-full bg-[var(--accent-glow)] blur-[100px] opacity-50" />
+            <div className="hero-glow opacity-0 absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-[var(--accent-glow)] blur-[120px]" />
+            <div className="hero-glow opacity-0 absolute bottom-1/4 -right-32 w-80 h-80 rounded-full bg-[var(--accent-glow)] blur-[100px] opacity-50" />
 
             {/* Grid lines */}
             <div
@@ -121,45 +121,45 @@ export default function Hero() {
 
                     {/* Text Content */}
                     <div className="hero-content flex-1 text-center lg:text-left max-w-2xl">
-                        <p className="hero-label text-[var(--accent)] font-medium tracking-widest uppercase text-xs mb-6">
+                        <p className="hero-label opacity-0 text-[var(--accent)] font-medium tracking-widest uppercase text-xs mb-6">
                             Available for opportunities
                         </p>
 
-                        <h1 className="hero-name text-white mb-4">
+                        <h1 className="hero-name opacity-0 text-white mb-4">
                             Hardik Patel
                         </h1>
 
-                        <p className="hero-title text-xl md:text-2xl text-[var(--text-secondary)] font-medium mb-6">
+                        <p className="hero-title opacity-0 text-xl md:text-2xl text-[var(--text-secondary)] font-medium mb-6">
                             Software Developer & Tech Leader
                         </p>
 
-                        <p className="hero-desc text-[var(--text-secondary)] max-w-lg mx-auto lg:mx-0 mb-8 leading-relaxed">
+                        <p className="hero-desc opacity-0 text-[var(--text-secondary)] max-w-lg mx-auto lg:mx-0 mb-8 leading-relaxed">
                             7+ years crafting Android apps, full-stack platforms, and leading teams.
                             B.Tech in IT + MBA from Canterbury. Passionate about AI-driven solutions.
                         </p>
 
                         <div className="hero-buttons flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
-                            <a href="#projects" className="btn-primary">
+                            <a href="#projects" className="btn-primary opacity-0">
                                 View My Work
                             </a>
-                            <a href="#contact" className="btn-secondary">
+                            <a href="#contact" className="btn-secondary opacity-0">
                                 Get in Touch
                             </a>
                         </div>
 
                         {/* Stats */}
                         <div className="hero-stats flex gap-8 justify-center lg:justify-start">
-                            <div>
+                            <div className="opacity-0">
                                 <div className="text-2xl font-bold text-white">7+</div>
                                 <div className="text-xs text-[var(--text-muted)] uppercase tracking-wide">Years Exp.</div>
                             </div>
-                            <div className="w-px bg-[var(--border-subtle)]" />
-                            <div>
+                            <div className="w-px bg-[var(--border-subtle)] opacity-0" />
+                            <div className="opacity-0">
                                 <div className="text-2xl font-bold text-white">15+</div>
                                 <div className="text-xs text-[var(--text-muted)] uppercase tracking-wide">Projects</div>
                             </div>
-                            <div className="w-px bg-[var(--border-subtle)]" />
-                            <div>
+                            <div className="w-px bg-[var(--border-subtle)] opacity-0" />
+                            <div className="opacity-0">
                                 <div className="text-2xl font-bold text-white">2</div>
                                 <div className="text-xs text-[var(--text-muted)] uppercase tracking-wide">Degrees</div>
                             </div>
@@ -167,7 +167,7 @@ export default function Hero() {
                     </div>
 
                     {/* Profile Image */}
-                    <div className="hero-image-wrapper flex-shrink-0">
+                    <div className="hero-image-wrapper opacity-0 flex-shrink-0">
                         <div className="relative w-64 h-64 md:w-80 md:h-80">
                             {/* Accent border */}
                             <div className="absolute inset-0 rounded-2xl border-2 border-[var(--accent)] opacity-20 rotate-3" />

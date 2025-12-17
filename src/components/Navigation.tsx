@@ -52,9 +52,9 @@ export default function Navigation() {
     return (
         <nav
             ref={navRef}
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-                    ? 'py-3 bg-[var(--bg-primary)]/90 backdrop-blur-md border-b border-[var(--border-subtle)]'
-                    : 'py-5 bg-transparent'
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 opacity-0 ${isScrolled
+                ? 'py-3 bg-[var(--bg-primary)]/90 backdrop-blur-md border-b border-[var(--border-subtle)]'
+                : 'py-5 bg-transparent'
                 }`}
         >
             <div className="container flex items-center justify-between">
@@ -70,8 +70,8 @@ export default function Navigation() {
                             key={item.name}
                             href={item.href}
                             className={`text-sm font-medium transition-colors ${activeSection === item.href.slice(1)
-                                    ? 'text-[var(--accent)]'
-                                    : 'text-[var(--text-secondary)] hover:text-white'
+                                ? 'text-[var(--accent)]'
+                                : 'text-[var(--text-secondary)] hover:text-white'
                                 }`}
                         >
                             {item.name}
