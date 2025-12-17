@@ -68,7 +68,7 @@ export default function Projects() {
                 })
 
                 // Individual panel content animations
-                panels.forEach((panel) => {
+                panels.forEach((panel, index) => {
                     const content = panel.querySelector('.project-content')
                     const number = panel.querySelector('.project-number')
                     const title = panel.querySelector('.project-title')
@@ -76,17 +76,35 @@ export default function Projects() {
                     const desc = panel.querySelector('.project-desc')
                     const btn = panel.querySelector('.project-btn')
 
-                    // Content reveal as panel comes into view
+                    // Common animation config
+                    // For the first panel (index 0), we need special handling because it's already in view
+                    // when the horizontal scroll starts. We'll use the horizontal wrapper's vertical scroll
+                    // to trigger the entry/exit for the first panel.
+                    const isFirst = index === 0
+
+                    const triggerConfig = isFirst ? {
+                        trigger: horizontal, // Use the specific container
+                        start: 'top 40%', // Trigger only when the section is well into view (content visible)
+                        toggleActions: 'play none none reverse' // Reverse when scrolling back up
+                    } : {
+                        trigger: panel,
+                        containerAnimation: scrollTween,
+                        start: 'left 80%',
+                        end: 'left 20%',
+                        toggleActions: 'play reverse play reverse'
+                    }
+
+                    // Content reveal
                     gsap.fromTo(content,
                         { opacity: 0.3, scale: 0.9, rotateY: -10 },
                         {
                             opacity: 1, scale: 1, rotateY: 0,
                             duration: 0.8,
-                            scrollTrigger: {
-                                trigger: panel,
-                                containerAnimation: scrollTween,
-                                start: 'left 80%',
-                                end: 'left 20%',
+                            scrollTrigger: isFirst ? {
+                                ...triggerConfig,
+                                scrub: false
+                            } : {
+                                ...triggerConfig,
                                 scrub: 1
                             }
                         }
@@ -99,7 +117,11 @@ export default function Projects() {
                             scale: 1, rotation: 0, opacity: 1,
                             duration: 0.8,
                             ease: 'back.out(1.5)',
-                            scrollTrigger: {
+                            scrollTrigger: isFirst ? {
+                                trigger: horizontal,
+                                start: 'top 40%',
+                                toggleActions: 'play none none reverse'
+                            } : {
                                 trigger: panel,
                                 containerAnimation: scrollTween,
                                 start: 'left 60%',
@@ -114,7 +136,11 @@ export default function Projects() {
                         {
                             y: 0, opacity: 1,
                             duration: 0.6,
-                            scrollTrigger: {
+                            scrollTrigger: isFirst ? {
+                                trigger: horizontal,
+                                start: 'top 40%',
+                                toggleActions: 'play none none reverse'
+                            } : {
                                 trigger: panel,
                                 containerAnimation: scrollTween,
                                 start: 'left 50%',
@@ -131,7 +157,11 @@ export default function Projects() {
                             stagger: 0.1,
                             duration: 0.4,
                             ease: 'back.out(1.5)',
-                            scrollTrigger: {
+                            scrollTrigger: isFirst ? {
+                                trigger: horizontal,
+                                start: 'top 40%',
+                                toggleActions: 'play none none reverse'
+                            } : {
                                 trigger: panel,
                                 containerAnimation: scrollTween,
                                 start: 'left 45%',
@@ -146,7 +176,11 @@ export default function Projects() {
                         {
                             y: 0, opacity: 1,
                             duration: 0.5,
-                            scrollTrigger: {
+                            scrollTrigger: isFirst ? {
+                                trigger: horizontal,
+                                start: 'top 40%',
+                                toggleActions: 'play none none reverse'
+                            } : {
                                 trigger: panel,
                                 containerAnimation: scrollTween,
                                 start: 'left 40%',
@@ -162,7 +196,11 @@ export default function Projects() {
                             scale: 1, opacity: 1,
                             duration: 0.5,
                             ease: 'elastic.out(1, 0.5)',
-                            scrollTrigger: {
+                            scrollTrigger: isFirst ? {
+                                trigger: horizontal,
+                                start: 'top 40%',
+                                toggleActions: 'play none none reverse'
+                            } : {
                                 trigger: panel,
                                 containerAnimation: scrollTween,
                                 start: 'left 35%',
