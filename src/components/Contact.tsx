@@ -19,7 +19,7 @@ export default function Contact() {
                 {
                     y: 0, opacity: 1, scale: 1, filter: 'blur(0px)', duration: 1,
                     ease: 'power3.out',
-                    scrollTrigger: { trigger: '.contact-title', start: 'top 85%' }
+                    scrollTrigger: { trigger: '.contact-title', start: 'top 85%', toggleActions: 'play none none reset' }
                 }
             )
 
@@ -29,7 +29,7 @@ export default function Contact() {
                 {
                     x: 0, opacity: 1, rotateY: 0, duration: 1,
                     ease: 'power3.out',
-                    scrollTrigger: { trigger: '.contact-grid', start: 'top 80%' }
+                    scrollTrigger: { trigger: '.contact-grid', start: 'top 80%', toggleActions: 'play none none reset' }
                 }
             )
 
@@ -39,7 +39,7 @@ export default function Contact() {
                 {
                     y: 0, opacity: 1, stagger: 0.15, duration: 0.6,
                     ease: 'power2.out',
-                    scrollTrigger: { trigger: '.contact-form', start: 'top 75%' }
+                    scrollTrigger: { trigger: '.contact-form', start: 'top 75%', toggleActions: 'play none none reset' }
                 }
             )
 
@@ -49,7 +49,7 @@ export default function Contact() {
                 {
                     scale: 1, opacity: 1, duration: 0.8,
                     ease: 'elastic.out(1, 0.5)',
-                    scrollTrigger: { trigger: '.submit-btn', start: 'top 90%' }
+                    scrollTrigger: { trigger: '.submit-btn', start: 'top 90%', toggleActions: 'play none none reset' }
                 }
             )
 
@@ -59,7 +59,7 @@ export default function Contact() {
                 {
                     x: 0, opacity: 1, rotateY: 0, duration: 1,
                     ease: 'power3.out',
-                    scrollTrigger: { trigger: '.contact-grid', start: 'top 80%' }
+                    scrollTrigger: { trigger: '.contact-grid', start: 'top 80%', toggleActions: 'play none none reset' }
                 }
             )
 
@@ -69,7 +69,7 @@ export default function Contact() {
                 {
                     x: 0, opacity: 1, stagger: 0.1, duration: 0.5,
                     ease: 'power2.out',
-                    scrollTrigger: { trigger: '.contact-info', start: 'top 75%' }
+                    scrollTrigger: { trigger: '.contact-info', start: 'top 75%', toggleActions: 'play none none reset' }
                 }
             )
 
@@ -79,7 +79,7 @@ export default function Contact() {
                 {
                     y: 0, opacity: 1, scale: 1, duration: 0.6,
                     ease: 'back.out(1.5)',
-                    scrollTrigger: { trigger: '.portfolio-btn', start: 'top 90%' }
+                    scrollTrigger: { trigger: '.portfolio-btn', start: 'top 90%', toggleActions: 'play none none reset' }
                 }
             )
 
@@ -88,7 +88,7 @@ export default function Contact() {
                 { y: 20, opacity: 0 },
                 {
                     y: 0, opacity: 1, duration: 0.6,
-                    scrollTrigger: { trigger: '.contact-footer', start: 'top 95%' }
+                    scrollTrigger: { trigger: '.contact-footer', start: 'top 95%', toggleActions: 'play none none reset' }
                 }
             )
 

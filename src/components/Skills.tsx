@@ -24,7 +24,7 @@ export default function Skills() {
                 {
                     y: 0, opacity: 1, scale: 1, duration: 1,
                     ease: 'power3.out',
-                    scrollTrigger: { trigger: '.skills-title', start: 'top 85%' }
+                    scrollTrigger: { trigger: '.skills-title', start: 'top 85%', toggleActions: 'play none none reset' }
                 }
             )
 
@@ -34,7 +34,7 @@ export default function Skills() {
                 {
                     y: 0, opacity: 1, rotateY: 0, scale: 1, stagger: 0.15, duration: 0.9,
                     ease: 'power3.out',
-                    scrollTrigger: { trigger: '.skills-grid', start: 'top 80%' }
+                    scrollTrigger: { trigger: '.skills-grid', start: 'top 80%', toggleActions: 'play none none reset' }
                 }
             )
 
@@ -47,7 +47,7 @@ export default function Skills() {
                         y: 0, opacity: 1, scale: 1, duration: 0.4,
                         delay: index * 0.03,
                         ease: 'back.out(1.5)',
-                        scrollTrigger: { trigger: '.skills-grid', start: 'top 75%' }
+                        scrollTrigger: { trigger: '.skills-grid', start: 'top 75%', toggleActions: 'play none none reset' }
                     }
                 )
             })

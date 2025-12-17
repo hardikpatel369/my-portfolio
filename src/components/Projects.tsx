@@ -45,7 +45,7 @@ export default function Projects() {
                 {
                     y: 0, opacity: 1, scale: 1, duration: 1,
                     ease: 'power3.out',
-                    scrollTrigger: { trigger: '.projects-title', start: 'top 85%' }
+                    scrollTrigger: { trigger: '.projects-title', start: 'top 85%', toggleActions: 'play none none reset' }
                 }
             )
 
@@ -182,7 +182,8 @@ export default function Projects() {
                         ease: 'back.out(2)',
                         scrollTrigger: {
                             trigger: horizontal,
-                            start: 'top 80%'
+                            start: 'top 80%',
+                            toggleActions: 'play none none reset'
                         }
                     }
                 )

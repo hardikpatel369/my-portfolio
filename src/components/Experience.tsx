@@ -53,7 +53,7 @@ export default function Experience() {
                 {
                     y: 0, opacity: 1, scale: 1, filter: 'blur(0px)', duration: 1,
                     ease: 'power3.out',
-                    scrollTrigger: { trigger: '.experience-title', start: 'top 85%' }
+                    scrollTrigger: { trigger: '.experience-title', start: 'top 85%', toggleActions: 'play none none reset' }
                 }
             )
 
@@ -62,7 +62,7 @@ export default function Experience() {
                 { scaleY: 0 },
                 {
                     scaleY: 1, duration: 1.5, ease: 'power2.out',
-                    scrollTrigger: { trigger: '.experience-grid', start: 'top 80%' }
+                    scrollTrigger: { trigger: '.experience-grid', start: 'top 80%', toggleActions: 'play none none reset' }
                 }
             )
 
@@ -90,6 +90,7 @@ export default function Experience() {
                         scrollTrigger: {
                             trigger: card as Element,
                             start: 'top 85%',
+                            toggleActions: 'play none none reset'
                         }
                     }
                 )
@@ -104,6 +105,7 @@ export default function Experience() {
                         scrollTrigger: {
                             trigger: card as Element,
                             start: 'top 80%',
+                            toggleActions: 'play none none reset'
                         }
                     }
                 )
@@ -119,6 +121,7 @@ export default function Experience() {
                         scrollTrigger: {
                             trigger: card as Element,
                             start: 'top 80%',
+                            toggleActions: 'play none none reset'
                         }
                     }
                 )
@@ -136,6 +139,7 @@ export default function Experience() {
                         scrollTrigger: {
                             trigger: card as Element,
                             start: 'top 80%',
+                            toggleActions: 'play none none reset'
                         }
                     }
                 )

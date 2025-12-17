@@ -25,7 +25,7 @@ export default function About() {
                 {
                     y: 0, opacity: 1, scale: 1, duration: 1,
                     ease: 'power3.out',
-                    scrollTrigger: { trigger: '.about-title', start: 'top 85%' }
+                    scrollTrigger: { trigger: '.about-title', start: 'top 85%', toggleActions: 'play none none reset' }
                 }
             )
 
@@ -35,7 +35,7 @@ export default function About() {
                 {
                     y: 0, opacity: 1, rotateX: 0, duration: 1,
                     ease: 'power3.out',
-                    scrollTrigger: { trigger: '.about-card', start: 'top 80%' }
+                    scrollTrigger: { trigger: '.about-card', start: 'top 80%', toggleActions: 'play none none reset' }
                 }
             )
 
@@ -45,7 +45,7 @@ export default function About() {
                 {
                     x: 0, opacity: 1, scale: 1, stagger: 0.2, duration: 0.8,
                     ease: 'back.out(1.5)',
-                    scrollTrigger: { trigger: '.edu-grid', start: 'top 80%' }
+                    scrollTrigger: { trigger: '.edu-grid', start: 'top 80%', toggleActions: 'play none none reset' }
                 }
             )
 
@@ -55,7 +55,7 @@ export default function About() {
                 {
                     scale: 1, rotation: 0, opacity: 1, stagger: 0.1, duration: 0.6,
                     ease: 'back.out(2)',
-                    scrollTrigger: { trigger: '.interests-grid', start: 'top 85%' }
+                    scrollTrigger: { trigger: '.interests-grid', start: 'top 85%', toggleActions: 'play none none reset' }
                 }
             )
 
