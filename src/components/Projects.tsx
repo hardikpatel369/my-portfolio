@@ -103,7 +103,7 @@ export default function Projects() {
                                 trigger: panel,
                                 containerAnimation: scrollTween,
                                 start: 'left 60%',
-                                toggleActions: 'play none none reverse'
+                                toggleActions: 'play reverse play reverse'
                             }
                         }
                     )
@@ -118,7 +118,7 @@ export default function Projects() {
                                 trigger: panel,
                                 containerAnimation: scrollTween,
                                 start: 'left 50%',
-                                toggleActions: 'play none none reverse'
+                                toggleActions: 'play reverse play reverse'
                             }
                         }
                     )
@@ -135,7 +135,7 @@ export default function Projects() {
                                 trigger: panel,
                                 containerAnimation: scrollTween,
                                 start: 'left 45%',
-                                toggleActions: 'play none none reverse'
+                                toggleActions: 'play reverse play reverse'
                             }
                         }
                     )
@@ -150,7 +150,7 @@ export default function Projects() {
                                 trigger: panel,
                                 containerAnimation: scrollTween,
                                 start: 'left 40%',
-                                toggleActions: 'play none none reverse'
+                                toggleActions: 'play reverse play reverse'
                             }
                         }
                     )
@@ -166,7 +166,7 @@ export default function Projects() {
                                 trigger: panel,
                                 containerAnimation: scrollTween,
                                 start: 'left 35%',
-                                toggleActions: 'play none none reverse'
+                                toggleActions: 'play reverse play reverse'
                             }
                         }
                     )
