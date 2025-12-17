@@ -68,15 +68,14 @@ export default function Hero() {
             })
 
             gsap.to('.hero-glow', {
-                y: 150,
-                scale: 1.3,
-                opacity: 0.3,
+                y: 80,
+                scale: 1.2,
                 ease: 'none',
                 scrollTrigger: {
                     trigger: heroRef.current,
                     start: 'top top',
                     end: 'bottom top',
-                    scrub: 2
+                    scrub: 3
                 }
             })
 
