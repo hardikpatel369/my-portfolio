@@ -8,7 +8,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 const skills = {
     technical: ['HTML', 'CSS', 'JavaScript', 'GSAP', 'Kotlin', 'Jetpack Compose', 'Kotlin Multiplatform', 'Coroutines', 'Ktor', 'Java', 'Python', 'SQL', 'Android Studio', 'Firebase', 'REST APIs', 'Git'],
-    automation: ['BeautifulSoup', 'Selenium', 'Web Scraping'],
+    automation: ['N8N', 'BeautifulSoup', 'Selenium', 'Web Scraping'],
     soft: ['Leadership', 'Team Management', 'Problem-solving', 'Time Management', 'Adaptability'],
     ai: ['Generative AI', 'LLMs', 'RAG', 'Computer Vision', 'AI Automation']
 }

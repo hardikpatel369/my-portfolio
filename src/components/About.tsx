@@ -39,6 +39,16 @@ export default function About() {
                 }
             )
 
+            // Stats animation with counter effect
+            gsap.fromTo('.stat-item',
+                { y: 40, opacity: 0, scale: 0.8 },
+                {
+                    y: 0, opacity: 1, scale: 1, stagger: 0.1, duration: 0.6,
+                    ease: 'back.out(1.7)',
+                    scrollTrigger: { trigger: '.stat-item', start: 'top 85%', toggleActions: 'play none none reset' }
+                }
+            )
+
             // Education cards with staggered slide-in
             gsap.fromTo('.edu-card',
                 { x: -60, opacity: 0, scale: 0.9 },
@@ -91,16 +101,45 @@ export default function About() {
                 </div>
 
                 <div className="max-w-3xl mx-auto">
+                    {/* Key Highlights */}
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                        {[
+                            { value: '7+', label: 'Years Experience' },
+                            { value: '20+', label: 'Projects Delivered' },
+                            { value: '5+', label: 'Android Apps' },
+                            { value: '100%', label: 'Client Satisfaction' },
+                        ].map((stat, index) => (
+                            <div key={index} className="stat-item text-center p-4 bg-[var(--bg-tertiary)] rounded-xl border border-[var(--border-subtle)]">
+                                <div className="text-2xl md:text-3xl font-bold text-[var(--accent)] mb-1">{stat.value}</div>
+                                <div className="text-xs text-[var(--text-muted)]">{stat.label}</div>
+                            </div>
+                        ))}
+                    </div>
+
                     {/* Description */}
                     <div className="about-card card mb-8" style={{ perspective: '1000px' }}>
                         <p className="text-[var(--text-secondary)] leading-relaxed mb-4">
-                            I&apos;m a <span className="text-[var(--accent)] font-medium">software developer</span> with 7+ years of experience
-                            building Android applications and full-stack web platforms. I hold a B.Tech in IT and an MBA from
-                            Canterbury Christ Church University.
+                            I&apos;m a <span className="text-[var(--accent)] font-medium">passionate software developer</span> with over 7 years of hands-on experience
+                            crafting robust Android applications and scalable full-stack web platforms. My journey began with a
+                            <span className="text-white font-medium"> B.Tech in Information Technology</span> from Atmiya University,
+                            followed by an <span className="text-white font-medium">MBA from Canterbury Christ Church University</span>,
+                            giving me a unique blend of technical expertise and business acumen.
+                        </p>
+                        <p className="text-[var(--text-secondary)] leading-relaxed mb-4">
+                            I specialize in building performant mobile apps using <span className="text-[var(--accent)]">Kotlin, Jetpack Compose, and modern Android architecture</span>.
+                            Beyond mobile, I&apos;m proficient in full-stack development with <span className="text-white font-medium">JavaScript, Python, and Firebase</span>,
+                            enabling me to deliver end-to-end solutions. My expertise extends to <span className="text-[var(--accent)]">AI automation, web scraping, and building intelligent systems</span> using
+                            LLMs and RAG pipelines.
+                        </p>
+                        <p className="text-[var(--text-secondary)] leading-relaxed mb-4">
+                            Currently, I bring my <span className="text-white font-medium">leadership and operational management skills</span> to Sainsbury&apos;s,
+                            where I lead teams and drive efficiency. I thrive at the intersection of technology and business,
+                            turning complex problems into elegant, user-centric solutions.
                         </p>
                         <p className="text-[var(--text-secondary)] leading-relaxed">
-                            Experienced in <span className="text-white font-medium">leading teams</span> and managing operations at Sainsbury&apos;s.
-                            Passionate about AI, machine learning, and creating impactful software solutions.
+                            I&apos;m deeply passionate about <span className="text-[var(--accent)]">Generative AI, Machine Learning, and Computer Vision</span>.
+                            Whether it&apos;s automating workflows, building smart applications, or exploring the latest in AI —
+                            I&apos;m always eager to push boundaries and create impactful software that makes a difference.
                         </p>
                     </div>
 
