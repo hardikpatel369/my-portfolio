@@ -5,6 +5,7 @@ import Image from 'next/image'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import HeroBackground from './HeroBackground'
+import SymbolGridHover from './SymbolGridHover'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -148,7 +149,7 @@ export default function Hero() {
                             <div className="absolute inset-0 rounded-2xl border border-[var(--border-subtle)] -rotate-3" />
 
                             {/* Image */}
-                            <div className="absolute inset-3 rounded-xl overflow-hidden bg-[var(--bg-secondary)]">
+                            <SymbolGridHover className="absolute inset-3 rounded-xl overflow-hidden bg-[var(--bg-secondary)]">
                                 <Image
                                     src="/hardik.jpg"
                                     alt="Hardik Patel"
@@ -156,7 +157,7 @@ export default function Hero() {
                                     className="object-cover"
                                     priority
                                 />
-                            </div>
+                            </SymbolGridHover>
 
                             {/* Tech badge */}
                             <div className="absolute -bottom-4 -right-4 bg-[var(--bg-secondary)] border border-[var(--border-subtle)] rounded-lg px-4 py-2">
