@@ -7,10 +7,10 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 const skills = {
-    technical: ['Java', 'Python', 'SQL', 'Android Studio', 'Firebase', 'REST APIs', 'Git', 'Retrofit'],
+    technical: ['HTML', 'CSS', 'JavaScript', 'GSAP', 'Kotlin', 'Jetpack Compose', 'Kotlin Multiplatform', 'Coroutines', 'Ktor', 'Java', 'Python', 'SQL', 'Android Studio', 'Firebase', 'REST APIs', 'Git'],
     automation: ['BeautifulSoup', 'Selenium', 'Web Scraping'],
     soft: ['Leadership', 'Team Management', 'Problem-solving', 'Time Management', 'Adaptability'],
-    ai: ['Generative AI', 'LLMs', 'Computer Vision', 'AI Automation']
+    ai: ['Generative AI', 'LLMs', 'RAG', 'Computer Vision', 'AI Automation']
 }
 
 export default function Skills() {
