@@ -104,17 +104,43 @@ export default function Navigation() {
                     '-=0.2'
                 )
         } else {
-            // Close animation
-            gsap.to(menuRef.current, {
-                opacity: 0,
-                duration: 0.2,
-                ease: 'power2.in',
+            // Close animation - exact mirror of open animation
+            const tl = gsap.timeline({
                 onComplete: () => {
                     if (menuRef.current) {
                         menuRef.current.style.visibility = 'hidden'
                     }
+                    // Reset positions for next open
+                    gsap.set(menuItems, { y: 0, opacity: 1 })
+                    gsap.set(ctaButton, { y: 0, opacity: 1, scale: 1 })
                 }
             })
+
+            // CTA fades out first (reverse of it appearing last)
+            tl.to(ctaButton, {
+                y: 30,
+                opacity: 0,
+                scale: 0.9,
+                duration: 0.3,
+                ease: 'power3.in'
+            })
+                // Menu items stagger out - slide DOWN (same direction they came from), last to first
+                .to(menuItems, {
+                    y: 40,
+                    opacity: 0,
+                    stagger: {
+                        each: 0.08,
+                        from: 'end'
+                    },
+                    duration: 0.4,
+                    ease: 'power3.in'
+                }, '-=0.2')
+                // Finally fade out the overlay
+                .to(menuRef.current, {
+                    opacity: 0,
+                    duration: 0.3,
+                    ease: 'power2.in'
+                }, '-=0.3')
         }
     }, [isMobileMenuOpen])
 
