@@ -72,39 +72,38 @@ export default function Navigation() {
         const ctaButton = menuItemsRef.current.querySelector('.mobile-cta')
 
         if (isMobileMenuOpen) {
-            // Open animation
+            // Open animation - blur appears first, then menu items
             const tl = gsap.timeline()
 
-            tl.to(menuRef.current, {
-                opacity: 1,
-                visibility: 'visible',
-                duration: 0.3,
-                ease: 'power2.out'
-            })
-                .fromTo(menuItems,
-                    { y: 40, opacity: 0 },
-                    {
-                        y: 0,
-                        opacity: 1,
-                        stagger: 0.08,
-                        duration: 0.5,
-                        ease: 'power3.out'
-                    },
-                    '-=0.1'
-                )
-                .fromTo(ctaButton,
-                    { y: 30, opacity: 0, scale: 0.9 },
-                    {
-                        y: 0,
-                        opacity: 1,
-                        scale: 1,
-                        duration: 0.4,
-                        ease: 'back.out(1.5)'
-                    },
-                    '-=0.2'
-                )
+            // First: Show the blur overlay (empty)
+            tl.set(menuItems, { y: 40, opacity: 0 })
+                .set(ctaButton, { y: 30, opacity: 0, scale: 0.9 })
+                .to(menuRef.current, {
+                    opacity: 1,
+                    visibility: 'visible',
+                    duration: 0.4,
+                    ease: 'power2.out'
+                })
+                // Brief pause to show empty blur
+                .to({}, { duration: 0.15 })
+                // Then: Menu items stagger in
+                .to(menuItems, {
+                    y: 0,
+                    opacity: 1,
+                    stagger: 0.08,
+                    duration: 0.5,
+                    ease: 'power3.out'
+                })
+                // CTA button appears last
+                .to(ctaButton, {
+                    y: 0,
+                    opacity: 1,
+                    scale: 1,
+                    duration: 0.4,
+                    ease: 'back.out(1.5)'
+                }, '-=0.3')
         } else {
-            // Close animation - exact mirror of open animation
+            // Close animation - menu items disappear first, show empty blur, then fade out
             const tl = gsap.timeline({
                 onComplete: () => {
                     if (menuRef.current) {
@@ -116,7 +115,7 @@ export default function Navigation() {
                 }
             })
 
-            // CTA fades out first (reverse of it appearing last)
+            // First: CTA fades out
             tl.to(ctaButton, {
                 y: 30,
                 opacity: 0,
@@ -124,7 +123,7 @@ export default function Navigation() {
                 duration: 0.3,
                 ease: 'power3.in'
             })
-                // Menu items stagger out - slide DOWN (same direction they came from), last to first
+                // Menu items stagger out (last to first)
                 .to(menuItems, {
                     y: 40,
                     opacity: 0,
@@ -135,12 +134,14 @@ export default function Navigation() {
                     duration: 0.4,
                     ease: 'power3.in'
                 }, '-=0.2')
-                // Finally fade out the overlay
+                // Brief pause to show empty blur overlay
+                .to({}, { duration: 0.2 })
+                // Finally: fade out the overlay
                 .to(menuRef.current, {
                     opacity: 0,
-                    duration: 0.3,
+                    duration: 0.35,
                     ease: 'power2.in'
-                }, '-=0.3')
+                })
         }
     }, [isMobileMenuOpen])
 
