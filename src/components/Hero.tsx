@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react'
 import Image from 'next/image'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import HeroBackground from './HeroBackground'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -49,11 +50,6 @@ export default function Hero() {
                     { y: 0, opacity: 1, stagger: 0.1, duration: 0.4 },
                     '-=0.5'
                 )
-                .fromTo('.hero-glow',
-                    { scale: 0, opacity: 0 },
-                    { scale: 1, opacity: 1, duration: 1.5, ease: 'power2.out' },
-                    '-=1'
-                )
 
             // Parallax on scroll
             gsap.to('.hero-image-wrapper', {
@@ -64,18 +60,6 @@ export default function Hero() {
                     start: 'top top',
                     end: 'bottom top',
                     scrub: 1.5
-                }
-            })
-
-            gsap.to('.hero-glow', {
-                y: 80,
-                scale: 1.2,
-                ease: 'none',
-                scrollTrigger: {
-                    trigger: heroRef.current,
-                    start: 'top top',
-                    end: 'bottom top',
-                    scrub: 3
                 }
             })
 
@@ -101,20 +85,10 @@ export default function Hero() {
         <section
             ref={heroRef}
             id="home"
-            className="relative min-h-screen flex items-center bg-bg-primary"
+            className="relative min-h-screen flex items-center bg-bg-primary overflow-hidden"
         >
-            {/* Animated glow */}
-            <div className="hero-glow opacity-0 absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-[var(--accent-glow)] blur-[120px]" />
-            <div className="hero-glow opacity-0 absolute bottom-1/4 -right-32 w-80 h-80 rounded-full bg-[var(--accent-glow)] blur-[100px] opacity-50" />
-
-            {/* Grid lines */}
-            <div
-                className="absolute inset-0 opacity-[0.015]"
-                style={{
-                    backgroundImage: `linear-gradient(var(--text-muted) 1px, transparent 1px)`,
-                    backgroundSize: '1px 80px'
-                }}
-            />
+            {/* Animated background effect */}
+            <HeroBackground />
 
             <div className="container relative z-10 py-20">
                 <div className="flex flex-col-reverse lg:flex-row items-center gap-16 lg:gap-20">
@@ -186,7 +160,7 @@ export default function Hero() {
 
                             {/* Tech badge */}
                             <div className="absolute -bottom-4 -right-4 bg-[var(--bg-secondary)] border border-[var(--border-subtle)] rounded-lg px-4 py-2">
-                                <span className="text-[var(--accent)] font-semibold text-sm">Android • Firebase • AI</span>
+                                <span className="text-[var(--accent)] font-semibold text-sm">Android • Full Stack • AI</span>
                             </div>
                         </div>
                     </div>
