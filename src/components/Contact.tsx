@@ -63,8 +63,8 @@ export default function Contact() {
                 }
             )
 
-            // Contact items staggered
-            gsap.fromTo('.contact-item',
+            // Contact items staggered (excluding social links)
+            gsap.fromTo('.contact-item:not(.social-link)',
                 { x: 30, opacity: 0 },
                 {
                     x: 0, opacity: 1, stagger: 0.1, duration: 0.5,
@@ -74,7 +74,7 @@ export default function Contact() {
             )
 
             // Social links animation
-            gsap.fromTo('.contact-info .flex.gap-4 a',
+            gsap.fromTo('.social-link',
                 { y: 20, opacity: 0, scale: 0.9 },
                 {
                     y: 0, opacity: 1, scale: 1, stagger: 0.15, duration: 0.6,
@@ -220,7 +220,7 @@ export default function Contact() {
                                     href="https://github.com/hardikpatel369"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="contact-item flex items-center gap-3 text-[var(--text-secondary)] hover:text-[var(--accent)] transition-colors"
+                                    className="social-link flex items-center gap-3 text-[var(--text-secondary)] hover:text-[var(--accent)] transition-colors"
                                 >
                                     <span className="w-10 h-10 rounded-lg bg-[var(--bg-tertiary)] flex items-center justify-center">
                                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -234,7 +234,7 @@ export default function Contact() {
                                     href="https://www.linkedin.com/in/hardikpatel369/"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="contact-item flex items-center gap-3 text-[var(--text-secondary)] hover:text-[var(--accent)] transition-colors"
+                                    className="social-link flex items-center gap-3 text-[var(--text-secondary)] hover:text-[var(--accent)] transition-colors"
                                 >
                                     <span className="w-10 h-10 rounded-lg bg-[var(--bg-tertiary)] flex items-center justify-center">
                                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
