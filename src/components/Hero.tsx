@@ -149,15 +149,17 @@ export default function Hero() {
                             <div className="absolute inset-0 rounded-2xl border border-[var(--border-subtle)] -rotate-3" />
 
                             {/* Image */}
-                            <SymbolGridHover className="absolute inset-3 rounded-xl overflow-hidden bg-[var(--bg-secondary)]">
-                                <Image
-                                    src="/hardik.jpg"
-                                    alt="Hardik Patel"
-                                    fill
-                                    className="object-cover"
-                                    priority
-                                />
-                            </SymbolGridHover>
+                            <div className="absolute inset-3 rounded-xl overflow-hidden bg-[var(--bg-secondary)]">
+                                <SymbolGridHover className="w-full h-full">
+                                    <Image
+                                        src="/hardik.jpg"
+                                        alt="Hardik Patel"
+                                        fill
+                                        className="object-cover"
+                                        priority
+                                    />
+                                </SymbolGridHover>
+                            </div>
 
                             {/* Tech badge */}
                             <div className="absolute -bottom-4 -right-4 bg-[var(--bg-secondary)] border border-[var(--border-subtle)] rounded-lg px-4 py-2">

@@ -201,8 +201,7 @@ export default function SymbolGridHover({ children, className = '' }: SymbolGrid
     return (
         <div
             ref={wrapperRef}
-            className={className}
-            style={{ position: 'relative', width: '100%', height: '100%' }}
+            className={`relative ${className}`}
         >
             {children}
         </div>
