@@ -117,7 +117,7 @@ export default function Hero() {
             />
 
             <div className="container relative z-10 py-20">
-                <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-20">
+                <div className="flex flex-col-reverse lg:flex-row items-center gap-16 lg:gap-20">
 
                     {/* Text Content */}
                     <div className="hero-content flex-1 text-center lg:text-left max-w-2xl">

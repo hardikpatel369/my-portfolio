@@ -17,10 +17,25 @@ const navItems = [
 
 export default function Navigation() {
     const navRef = useRef<HTMLElement>(null)
+    const menuRef = useRef<HTMLDivElement>(null)
+    const menuItemsRef = useRef<HTMLDivElement>(null)
     const [isScrolled, setIsScrolled] = useState(false)
     const [activeSection, setActiveSection] = useState('home')
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
+    // Handle body scroll lock
+    useEffect(() => {
+        if (isMobileMenuOpen) {
+            document.body.style.overflow = 'hidden'
+        } else {
+            document.body.style.overflow = ''
+        }
+        return () => {
+            document.body.style.overflow = ''
+        }
+    }, [isMobileMenuOpen])
+
+    // GSAP animations
     useEffect(() => {
         gsap.fromTo(navRef.current,
             { y: -50, opacity: 0 },
@@ -49,76 +64,191 @@ export default function Navigation() {
         }
     }, [])
 
+    // Mobile menu animations
+    useEffect(() => {
+        if (!menuRef.current || !menuItemsRef.current) return
+
+        const menuItems = menuItemsRef.current.querySelectorAll('.mobile-nav-item')
+        const ctaButton = menuItemsRef.current.querySelector('.mobile-cta')
+
+        if (isMobileMenuOpen) {
+            // Open animation
+            const tl = gsap.timeline()
+
+            tl.to(menuRef.current, {
+                opacity: 1,
+                visibility: 'visible',
+                duration: 0.3,
+                ease: 'power2.out'
+            })
+                .fromTo(menuItems,
+                    { y: 40, opacity: 0 },
+                    {
+                        y: 0,
+                        opacity: 1,
+                        stagger: 0.08,
+                        duration: 0.5,
+                        ease: 'power3.out'
+                    },
+                    '-=0.1'
+                )
+                .fromTo(ctaButton,
+                    { y: 30, opacity: 0, scale: 0.9 },
+                    {
+                        y: 0,
+                        opacity: 1,
+                        scale: 1,
+                        duration: 0.4,
+                        ease: 'back.out(1.5)'
+                    },
+                    '-=0.2'
+                )
+        } else {
+            // Close animation
+            gsap.to(menuRef.current, {
+                opacity: 0,
+                duration: 0.2,
+                ease: 'power2.in',
+                onComplete: () => {
+                    if (menuRef.current) {
+                        menuRef.current.style.visibility = 'hidden'
+                    }
+                }
+            })
+        }
+    }, [isMobileMenuOpen])
+
+    const handleNavClick = (href: string) => {
+        setIsMobileMenuOpen(false)
+        // Small delay for animation to complete before scrolling
+        setTimeout(() => {
+            const element = document.querySelector(href)
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' })
+            }
+        }, 200)
+    }
+
     return (
-        <nav
-            ref={navRef}
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 opacity-0 ${isScrolled
-                ? 'py-3 bg-[var(--bg-primary)]/90 backdrop-blur-md border-b border-[var(--border-subtle)]'
-                : 'py-5 bg-transparent'
-                }`}
-        >
-            <div className="container flex items-center justify-between">
-                {/* Logo */}
-                <a href="#home" className="text-xl font-bold text-[var(--accent)]">
-                    HP
-                </a>
+        <>
+            <nav
+                ref={navRef}
+                className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 opacity-0 ${isScrolled
+                    ? 'py-3 bg-[var(--bg-primary)]/90 backdrop-blur-md border-b border-[var(--border-subtle)]'
+                    : 'py-5 bg-transparent'
+                    }`}
+            >
+                <div className="container flex items-center justify-between">
+                    {/* Logo */}
+                    <a href="#home" className="text-xl font-bold text-[var(--accent)] z-50">
+                        HP
+                    </a>
 
-                {/* Desktop Nav */}
-                <div className="hidden md:flex items-center gap-8">
-                    {navItems.map((item) => (
-                        <a
-                            key={item.name}
-                            href={item.href}
-                            className={`text-sm font-medium transition-colors ${activeSection === item.href.slice(1)
-                                ? 'text-[var(--accent)]'
-                                : 'text-[var(--text-secondary)] hover:text-white'
-                                }`}
-                        >
-                            {item.name}
+                    {/* Desktop Nav */}
+                    <div className="hidden md:flex items-center gap-8">
+                        {navItems.map((item) => (
+                            <a
+                                key={item.name}
+                                href={item.href}
+                                className={`text-sm font-medium transition-colors ${activeSection === item.href.slice(1)
+                                    ? 'text-[var(--accent)]'
+                                    : 'text-[var(--text-secondary)] hover:text-white'
+                                    }`}
+                            >
+                                {item.name}
+                            </a>
+                        ))}
+                    </div>
+
+                    {/* Desktop-only Hire Me button - wrapped in div to bypass btn-primary display override */}
+                    <div className="hidden md:block">
+                        <a href="#contact" className="btn-primary !py-2 !px-5 text-sm">
+                            Hire Me
                         </a>
-                    ))}
+                    </div>
+
+                    {/* Mobile Toggle - Animated Hamburger */}
+                    <button
+                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                        className="md:hidden w-10 h-10 rounded-lg bg-[var(--bg-secondary)] border border-[var(--border-subtle)] flex items-center justify-center z-50 relative"
+                        aria-label="Toggle menu"
+                    >
+                        <div className="w-5 h-4 relative flex flex-col justify-between">
+                            <span
+                                className={`w-full h-0.5 bg-white rounded-full transform transition-all duration-300 origin-center ${isMobileMenuOpen ? 'rotate-45 translate-y-[7px]' : ''
+                                    }`}
+                            />
+                            <span
+                                className={`w-full h-0.5 bg-white rounded-full transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0 scale-0' : 'opacity-100 scale-100'
+                                    }`}
+                            />
+                            <span
+                                className={`w-full h-0.5 bg-white rounded-full transform transition-all duration-300 origin-center ${isMobileMenuOpen ? '-rotate-45 -translate-y-[7px]' : ''
+                                    }`}
+                            />
+                        </div>
+                    </button>
                 </div>
+            </nav>
 
-                {/* CTA */}
-                <a href="#contact" className="hidden md:inline-flex btn-primary !py-2 !px-5 text-sm">
-                    Hire Me
-                </a>
+            {/* Full-screen Mobile Menu */}
+            <div
+                ref={menuRef}
+                className="md:hidden fixed inset-0 z-40 bg-[var(--bg-primary)]/95 backdrop-blur-xl"
+                style={{ opacity: 0, visibility: 'hidden' }}
+            >
+                {/* Decorative elements */}
+                <div className="absolute top-1/4 -left-20 w-64 h-64 rounded-full bg-[var(--accent-glow)] blur-[100px] opacity-30" />
+                <div className="absolute bottom-1/4 -right-20 w-48 h-48 rounded-full bg-[var(--accent-glow)] blur-[80px] opacity-20" />
 
-                {/* Mobile Toggle */}
-                <button
-                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                    className="md:hidden w-10 h-10 rounded-lg bg-[var(--bg-secondary)] border border-[var(--border-subtle)] flex items-center justify-center"
+                {/* Grid lines */}
+                <div
+                    className="absolute inset-0 opacity-[0.02]"
+                    style={{
+                        backgroundImage: `linear-gradient(var(--text-muted) 1px, transparent 1px)`,
+                        backgroundSize: '1px 60px'
+                    }}
+                />
+
+                <div
+                    ref={menuItemsRef}
+                    className="h-full flex flex-col justify-center items-center px-8"
                 >
-                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        {isMobileMenuOpen ? (
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                        ) : (
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                        )}
-                    </svg>
-                </button>
-            </div>
+                    {/* Nav Links */}
+                    <div className="flex flex-col items-center gap-6 mb-12">
+                        {navItems.map((item, index) => (
+                            <a
+                                key={item.name}
+                                href={item.href}
+                                onClick={(e) => {
+                                    e.preventDefault()
+                                    handleNavClick(item.href)
+                                }}
+                                className={`mobile-nav-item text-3xl font-semibold transition-all duration-300 hover:text-[var(--accent)] hover:scale-105 ${activeSection === item.href.slice(1)
+                                    ? 'text-[var(--accent)]'
+                                    : 'text-white'
+                                    }`}
+                            >
+                                {item.name}
+                            </a>
+                        ))}
+                    </div>
 
-            {/* Mobile Menu */}
-            <div className={`md:hidden absolute top-full left-0 right-0 bg-[var(--bg-primary)] border-b border-[var(--border-subtle)] transition-all duration-300 ${isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
-                }`}>
-                <div className="container py-6 flex flex-col gap-4">
-                    {navItems.map((item) => (
-                        <a
-                            key={item.name}
-                            href={item.href}
-                            onClick={() => setIsMobileMenuOpen(false)}
-                            className={`text-lg font-medium py-2 ${activeSection === item.href.slice(1) ? 'text-[var(--accent)]' : 'text-[var(--text-secondary)]'
-                                }`}
-                        >
-                            {item.name}
-                        </a>
-                    ))}
-                    <a href="#contact" onClick={() => setIsMobileMenuOpen(false)} className="btn-primary justify-center mt-4">
+                    {/* CTA Button */}
+                    <a
+                        href="#contact"
+                        onClick={(e) => {
+                            e.preventDefault()
+                            handleNavClick('#contact')
+                        }}
+                        className="mobile-cta btn-primary !py-4 !px-10 text-lg"
+                    >
                         Hire Me
                     </a>
+
+
                 </div>
             </div>
-        </nav>
+        </>
     )
 }

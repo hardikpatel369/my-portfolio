@@ -249,7 +249,7 @@ export default function Projects() {
                         >
                             <div className="project-content max-w-3xl w-full bg-[var(--bg-secondary)] rounded-2xl p-8 md:p-12 border border-[var(--border-subtle)] relative overflow-hidden">
                                 {/* Project number */}
-                                <span className="project-number absolute top-6 right-8 text-6xl md:text-8xl font-bold text-[var(--bg-tertiary)] select-none">
+                                <span className="project-number absolute top-6 right-8 text-5xl md:text-6xl font-bold text-[var(--bg-tertiary)] select-none">
                                     0{index + 1}
                                 </span>
 

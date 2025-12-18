@@ -195,20 +195,19 @@ export default function Experience() {
                                 {/* Dot on the line */}
                                 <div className="absolute -left-[calc(2rem+4px)] top-8 w-2.5 h-2.5 rounded-full bg-[var(--accent)] border-2 border-[var(--bg-secondary)]" />
 
-                                <div className="pl-2">
-                                    <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
-                                        <div>
-                                            <span className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-[var(--accent-glow)] text-[var(--accent)] mb-3">
-                                                {exp.period}
-                                            </span>
-                                            <h3 className="text-white text-xl mb-1">{exp.role}</h3>
-                                            <p className="text-[var(--accent)] text-sm font-medium">{exp.company}</p>
-                                            <p className="text-[var(--text-muted)] text-xs mt-1">{exp.location}</p>
-                                        </div>
+                                <div className="pl-2 relative">
+                                    {/* Number - absolutely positioned for consistent placement */}
+                                    <span className="exp-number absolute -top-2 right-0 text-5xl md:text-6xl font-bold text-[var(--bg-elevated)] select-none">
+                                        0{index + 1}
+                                    </span>
 
-                                        <span className="exp-number text-5xl md:text-6xl font-bold text-[var(--bg-elevated)] select-none">
-                                            0{index + 1}
+                                    <div className="pr-16 md:pr-20 mb-4">
+                                        <span className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-[var(--accent-glow)] text-[var(--accent)] mb-3">
+                                            {exp.period}
                                         </span>
+                                        <h3 className="text-white text-xl mb-1">{exp.role}</h3>
+                                        <p className="text-[var(--accent)] text-sm font-medium">{exp.company}</p>
+                                        <p className="text-[var(--text-muted)] text-xs mt-1">{exp.location}</p>
                                     </div>
 
                                     <ul className="space-y-2 mt-4">
