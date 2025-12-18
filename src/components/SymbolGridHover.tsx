@@ -79,8 +79,8 @@ export default function SymbolGridHover({ children, className = '' }: SymbolGrid
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    background-color: rgba(0, 0, 0, 0.9);
-                    color: #00ff41;
+                    background-color: #0c0c0c;
+                    color: #e8a838;
                     font-size: 10px;
                     font-family: 'IBM Plex Mono', 'Consolas', monospace;
                     opacity: 0;
