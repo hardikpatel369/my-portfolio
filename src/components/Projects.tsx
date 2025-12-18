@@ -247,7 +247,7 @@ export default function Projects() {
                             className="project-panel flex-shrink-0 w-screen h-screen flex items-center justify-center px-4 md:px-8"
                             style={{ perspective: '1000px' }}
                         >
-                            <div className="project-content max-w-3xl w-full bg-[var(--bg-secondary)] rounded-2xl p-8 md:p-12 border border-[var(--border-subtle)] relative overflow-hidden">
+                            <div className="project-content max-w-3xl w-full min-h-[380px] md:min-h-[420px] bg-[var(--bg-secondary)] rounded-2xl p-8 md:p-12 border border-[var(--border-subtle)] relative overflow-hidden">
                                 {/* Project number */}
                                 <span className="project-number absolute top-6 right-8 text-5xl md:text-6xl font-bold text-[var(--bg-tertiary)] select-none">
                                     0{index + 1}
@@ -290,7 +290,7 @@ export default function Projects() {
                                 </div>
 
                                 {/* Progress dots */}
-                                <div className="absolute bottom-6 right-8 flex gap-2">
+                                <div className="absolute bottom-2 md:bottom-6 right-6 md:right-8 flex gap-2">
                                     {projects.map((_, i) => (
                                         <div
                                             key={i}
