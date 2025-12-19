@@ -236,7 +236,6 @@ export default function Projects() {
             <div className="projects-title text-center py-20">
                 <p className="text-[var(--accent)] font-medium tracking-widest uppercase text-xs mb-4">Portfolio</p>
                 <h2 className="text-white mb-4">Featured Projects</h2>
-                <p className="text-[var(--text-muted)] text-sm">Scroll to explore →</p>
             </div>
 
             <div ref={horizontalRef} className="overflow-hidden">
