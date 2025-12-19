@@ -101,7 +101,8 @@ body::before {
 }
 
 /* Section Base */
-section {
+/* Section Base */
+main section {
   position: relative;
   padding: 120px 0;
   overflow: hidden;
@@ -260,7 +261,7 @@ p {
 
 /* Responsive adjustments */
 @media (max-width: 1024px) {
-  section {
+  main section {
     padding: 80px 0;
   }
 
@@ -270,7 +271,7 @@ p {
 }
 
 @media (max-width: 768px) {
-  section {
+  main section {
     padding: 60px 0;
   }
 
