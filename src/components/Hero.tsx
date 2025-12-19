@@ -143,7 +143,7 @@ export default function Hero() {
 
                     {/* Profile Image */}
                     <div className="hero-image-wrapper opacity-0 flex-shrink-0">
-                        <div className="relative w-64 h-64 md:w-80 md:h-80">
+                        <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 xl:w-[28rem] xl:h-[28rem] 2xl:w-[32rem] 2xl:h-[32rem]">
                             {/* Accent border */}
                             <div className="absolute inset-0 rounded-2xl border-2 border-[var(--accent)] opacity-20 rotate-3" />
                             <div className="absolute inset-0 rounded-2xl border border-[var(--border-subtle)] -rotate-3" />
