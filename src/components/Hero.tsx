@@ -6,6 +6,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import HeroBackground from './HeroBackground'
 import SymbolGridHover from './SymbolGridHover'
+import TextHackerEffect from './TextHackerEffect'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -101,7 +102,7 @@ export default function Hero() {
                         </p>
 
                         <h1 className="hero-name opacity-0 text-white mb-4">
-                            Hardik Patel
+                            <TextHackerEffect text="Hardik Patel" />
                         </h1>
 
                         <p className="hero-title opacity-0 text-xl md:text-2xl text-[var(--text-secondary)] font-medium mb-6">
