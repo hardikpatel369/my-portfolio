@@ -166,7 +166,7 @@ export default function Contact() {
     }
 
     return (
-        <section ref={sectionRef} id="contact" className="bg-[var(--bg-secondary)] relative overflow-hidden">
+        <section ref={sectionRef} id="contact" className="bg-[var(--bg-secondary)] relative overflow-hidden pb-8">
             <div className="absolute top-0 left-0 right-0 h-px bg-[var(--border-subtle)]" />
 
             {/* Background glow */}
