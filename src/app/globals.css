@@ -300,3 +300,157 @@ p {
     font-size: 1.5rem;
   }
 }
+
+/* ============ SKILL TAG ANIMATIONS ============ */
+
+/* Shimmer/Glint Effect */
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.skill-tag-animated {
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  perspective: 500px;
+}
+
+.skill-tag-animated::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(232, 168, 56, 0.3) 50%,
+      transparent 100%);
+  background-size: 200% 100%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.skill-tag-animated:hover::before {
+  opacity: 1;
+  animation: shimmer 1.5s ease-in-out;
+}
+
+/* Floating Animation with variations */
+@keyframes float-1 {
+
+  0%,
+  100% {
+    transform: translateY(0px) rotateX(0deg);
+  }
+
+  50% {
+    transform: translateY(-4px) rotateX(2deg);
+  }
+}
+
+@keyframes float-2 {
+
+  0%,
+  100% {
+    transform: translateY(0px) rotateZ(0deg);
+  }
+
+  50% {
+    transform: translateY(-3px) rotateZ(1deg);
+  }
+}
+
+@keyframes float-3 {
+
+  0%,
+  100% {
+    transform: translateY(0px) scale(1);
+  }
+
+  50% {
+    transform: translateY(-5px) scale(1.02);
+  }
+}
+
+/* Glow Pulse Animation */
+@keyframes glow-pulse {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 rgba(232, 168, 56, 0);
+  }
+
+  50% {
+    box-shadow: 0 0 20px rgba(232, 168, 56, 0.4), 0 0 40px rgba(232, 168, 56, 0.2);
+  }
+}
+
+.skill-tag-glow {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+/* 3D Hover Tilt */
+.skill-tag-3d {
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.skill-tag-3d:hover {
+  transform: perspective(500px) rotateX(var(--rotateX, 0deg)) rotateY(var(--rotateY, 0deg)) translateZ(10px) scale(1.1);
+  box-shadow: 0 10px 30px rgba(232, 168, 56, 0.3);
+  z-index: 10;
+}
+
+/* Magnetic Push Effect - applied to siblings */
+.skill-tag-magnetic {
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Border Orbit Animation */
+@keyframes border-orbit {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.skill-tag-orbit:hover {
+  border-color: transparent;
+  background-clip: padding-box;
+  position: relative;
+}
+
+.skill-tag-orbit:hover::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(90deg,
+      var(--accent) 0%,
+      var(--accent-light) 25%,
+      var(--accent) 50%,
+      var(--accent-dark) 75%,
+      var(--accent) 100%);
+  background-size: 300% 100%;
+  animation: border-orbit 2s linear infinite;
+  border-radius: 10px;
+  z-index: -1;
+}
