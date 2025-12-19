@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import { Toaster } from 'sonner'
 
 export const metadata: Metadata = {
     title: 'Hardik Patel | Software Developer & Tech Leader',
@@ -23,7 +24,20 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-            <body>{children}</body>
+            <body suppressHydrationWarning>
+                {children}
+                <Toaster
+                    position="top-right"
+                    toastOptions={{
+                        style: {
+                            background: 'var(--bg-tertiary)',
+                            color: 'white',
+                            border: '1px solid var(--border-subtle)',
+                        },
+                        className: 'class',
+                    }}
+                />
+            </body>
         </html>
     )
 }

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { toast } from 'sonner'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -151,9 +152,14 @@ export default function Contact() {
                 { scale: 1.1 },
                 { scale: 1, duration: 0.5, ease: 'elastic.out(1, 0.5)' }
             )
+            toast.success('Message sent successfully!', {
+                description: 'We will get back to you soon.'
+            })
         } catch (error) {
             console.error('Error sending message:', error)
-            // You could add error handling UI here
+            toast.error('Failed to send message', {
+                description: 'Please try again later or email me directly.'
+            })
         } finally {
             setIsSubmitting(false)
         }
