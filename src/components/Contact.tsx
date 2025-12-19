@@ -125,8 +125,8 @@ export default function Contact() {
         })
 
         try {
-            // Send data to n8n webhook
-            const response = await fetch('https://n8n.srv1049963.hstgr.cloud/webhook/07ab07f7-16b3-4305-82ea-98d8928dedc5', {
+            // Send data to n8n webhook via internal proxy
+            const response = await fetch('/api/contact', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
