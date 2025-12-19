@@ -124,15 +124,39 @@ export default function Contact() {
             repeat: 1
         })
 
-        await new Promise(resolve => setTimeout(resolve, 1500))
-        setFormState({ name: '', email: '', message: '' })
-        setIsSubmitting(false)
+        try {
+            // Send data to n8n webhook
+            const response = await fetch('https://n8n.srv1049963.hstgr.cloud/webhook/07ab07f7-16b3-4305-82ea-98d8928dedc5', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: formState.name,
+                    email: formState.email,
+                    message: formState.message,
+                    timestamp: new Date().toISOString(),
+                }),
+            })
 
-        // Success animation
-        gsap.fromTo('.submit-btn',
-            { scale: 1.1 },
-            { scale: 1, duration: 0.5, ease: 'elastic.out(1, 0.5)' }
-        )
+            if (!response.ok) {
+                throw new Error('Failed to send message')
+            }
+
+            // Clear form on success
+            setFormState({ name: '', email: '', message: '' })
+
+            // Success animation
+            gsap.fromTo('.submit-btn',
+                { scale: 1.1 },
+                { scale: 1, duration: 0.5, ease: 'elastic.out(1, 0.5)' }
+            )
+        } catch (error) {
+            console.error('Error sending message:', error)
+            // You could add error handling UI here
+        } finally {
+            setIsSubmitting(false)
+        }
     }
 
     return (
