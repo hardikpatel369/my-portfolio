@@ -131,7 +131,7 @@ export default function Hero() {
                             </div>
                             <div className="w-px bg-[var(--border-subtle)] opacity-0" />
                             <div className="opacity-0">
-                                <div className="text-2xl font-bold text-white">15+</div>
+                                <div className="text-2xl font-bold text-white">20+</div>
                                 <div className="text-xs text-[var(--text-muted)] uppercase tracking-wide">Projects</div>
                             </div>
                             <div className="w-px bg-[var(--border-subtle)] opacity-0" />
